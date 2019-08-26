@@ -16,7 +16,7 @@ class CreateTokensTable extends Migration
         Schema::create('tokens', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->UnsignedInteger('user_id');
-            $table->string('token');
+            $table->string('token',50);
             $table->timestamps();
         });
     }

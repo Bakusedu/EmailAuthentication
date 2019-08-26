@@ -11,5 +11,10 @@
 |
 */
 
-Route::get('/login', 'Auth\AuthController@login');
-Route::post('/login', 'Auth\AuthController@loginUser');
+Route::get('login', [ 'as' => 'login', 'uses' => 'Auth\AuthController@login']);
+Route::post('login', 'Auth\AuthController@loginUser');
+Route::get('/auth/token/{token}', 'Auth\AuthController@authenticate');
+Route::get('dashboard', function(){
+  return view('dashboard');
+})->middleware('auth');
+Route::get('logout', 'Auth\AuthController@logout');
